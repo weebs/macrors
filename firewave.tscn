@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bvg27yi2swmwj"]
+
+[ext_resource type="Script" uid="uid://bkqlj42cu50fn" path="res://Firewave.cs" id="1_gkkgj"]
+[ext_resource type="PackedScene" uid="uid://bqsx5vconcx6r" path="res://fireball.tscn" id="2_dp7m7"]
+
+[node name="Firewave" type="Node2D" unique_id=864068658]
+script = ExtResource("1_gkkgj")
+fireball = ExtResource("2_dp7m7")

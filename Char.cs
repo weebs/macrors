@@ -6,19 +6,28 @@ public partial class Char : CharacterBody2D
     private NavigationAgent2D agent;
 
     public float movementSpeed = 200f;
+    public float health = 50.0f;
+    ProgressBar healthBar;
 
     public override void _Ready()
     {
+        healthBar = GetNode<ProgressBar>("ProgressBar");
         agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         agent.PathDesiredDistance = 4;
         agent.TargetDesiredDistance = 4;
         Callable.From(ActorSetup).CallDeferred();
+        GetParent<Main>().ConnectChar(this);
     }
 
     public void NavTo(Vector2 pos) { agent.TargetPosition = pos; }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (health <= 0)
+        {
+            QueueFree();
+        }
+        healthBar.Value = health;
         if (agent.IsNavigationFinished())
             return;
         var curPos = GlobalTransform.Origin;
@@ -26,6 +35,8 @@ public partial class Char : CharacterBody2D
         Velocity = curPos.DirectionTo(nextPathPos) * movementSpeed;
         MoveAndSlide();
     }
+
+    public void Hurt(float dmg) => health -= dmg;
 
     private async void ActorSetup()
     {
