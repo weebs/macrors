@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncbi3"]
 
 [node name="Char" type="CharacterBody2D" unique_id=1198769720]
+input_pickable = true
 script = ExtResource("1_hs5vj")
 
 [node name="Highlight" type="Polygon2D" parent="." unique_id=838336245]

@@ -3,7 +3,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 public union Foo(string, int);
 
@@ -26,11 +26,24 @@ public partial class Main : Node2D
         }
         get => field;
     }
+
     List<Char> chars = new();
     public IReadOnlyList<Char> Characters { get => chars; }
-    public IReadOnlyList<Char> AliveCharacters { get => chars.Where(c => c.IsAlive).ToList(); }
-
+    public static Main global;
+    bool charJustSelected = false;
+    int score = 0;
     Label selectedLabel;
+
+    public void Score(int amt)
+    {
+        score += amt;
+    }
+
+    public override void _EnterTree()
+    {
+        global = this;
+    }
+
     public override void _Ready()
     {
         selectedLabel = GetNode<Label>("Label");
@@ -41,15 +54,18 @@ public partial class Main : Node2D
         chars.Add(c);
         if (selectedChar == null)
             selectedChar = c;
-        var btn = new TextureButton();
-        btn.StretchMode = TextureButton.StretchModeEnum.Scale;
-        btn.TextureNormal = c.sprite.Texture;
-        btn.IgnoreTextureSize = true;
-        btn.CustomMaximumSize = new Vector2(20, 20);
-        btn.CustomMinimumSize = new Vector2(20, 20);
+        var btn = new TextureButton
+        {
+            StretchMode = TextureButton.StretchModeEnum.Scale,
+            TextureNormal = c.sprite.Texture,
+            IgnoreTextureSize = true,
+            CustomMaximumSize = new Vector2(20, 20),
+            CustomMinimumSize = new Vector2(20, 20)
+        };
         btn.Pressed += () => { selectedChar = c; };
         GetNode("VBoxContainer").AddChild(btn);
     }
+
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("Char1"))
@@ -67,17 +83,24 @@ public partial class Main : Node2D
         if (selectedChar != null)
         {
             selectedLabel.Text = selectedChar.Name;
+            selectedLabel.Text += ", " + score;
         }
     }
 
-    public override void _UnhandledInput(InputEvent @event)
+    public override async void _UnhandledInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton me)
         {
+            //await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             if (me.ButtonIndex == MouseButton.Left && me.Pressed)
             {
                 selectedChar.NavTo(GetGlobalMousePosition());
             }
         }
+    }
+
+    public void SelectChar(Char c)
+    {
+        selectedChar = c;
     }
 }

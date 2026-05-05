@@ -15,7 +15,11 @@ public partial class Fireball : Area2D
     public override void _PhysicsProcess(double delta)
     {
         ticks++;
-        if (ticks > 1000) QueueFree();
+        if (ticks > 400)
+        {
+            Main.global.Score(10);
+            QueueFree();
+        }
         Translate(dir * speed * (float)delta);
     }
 
@@ -24,7 +28,7 @@ public partial class Fireball : Area2D
         GD.Print("Fireball ", this, " collided with ", body);
         if (body is Char c)
         {
-            c.Hurt(10f);
+            c.Hurt(1f);
         }
         QueueFree();
     }

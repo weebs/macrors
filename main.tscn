@@ -21,13 +21,13 @@ script = ExtResource("1_ig7tw")
 position = Vector2(64, 383)
 
 [node name="Char2" parent="." unique_id=1140299686 instance=ExtResource("2_kek77")]
-position = Vector2(368, 389)
+position = Vector2(562, 580)
 
 [node name="Sprite2D" parent="Char2" index="1" unique_id=1461982612]
 texture = ExtResource("4_5vw27")
 
 [node name="Char3" parent="." unique_id=326104074 instance=ExtResource("2_kek77")]
-position = Vector2(241, 269)
+position = Vector2(873, 304)
 
 [node name="Sprite2D" parent="Char3" index="1" unique_id=1461982612]
 texture = ExtResource("5_kek77")
