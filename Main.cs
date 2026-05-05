@@ -3,6 +3,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public union Foo(string, int);
 
@@ -26,13 +27,16 @@ public partial class Main : Node2D
         get => field;
     }
     List<Char> chars = new();
+    public IReadOnlyList<Char> Characters { get => chars; }
+    public IReadOnlyList<Char> AliveCharacters { get => chars.Where(c => c.IsAlive).ToList(); }
+
     Label selectedLabel;
     public override void _Ready()
     {
         selectedLabel = GetNode<Label>("Label");
     }
 
-    public void ConnectChar(Char c)
+    public void RegisterCharacter(Char c)
     {
         chars.Add(c);
         if (selectedChar == null)

@@ -3,7 +3,7 @@ using System;
 
 public partial class Fireball : Area2D
 {
-    Vector2 dir = new(-1, -0.25f);
+    public Vector2 dir = new(-1, -0.25f);
     float speed = 200f;
     int ticks = 0;
 

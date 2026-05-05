@@ -10,6 +10,8 @@ public partial class Char : CharacterBody2D
     public float health = 50.0f;
     ProgressBar healthBar;
 
+    public bool IsAlive { get => Visible == true; }
+
     public override void _Ready()
     {
         sprite = GetNode<Sprite2D>("Sprite2D");
@@ -18,16 +20,19 @@ public partial class Char : CharacterBody2D
         agent.PathDesiredDistance = 4;
         agent.TargetDesiredDistance = 4;
         Callable.From(ActorSetup).CallDeferred();
-        GetParent<Main>().ConnectChar(this);
+        GetParent<Main>().RegisterCharacter(this);
     }
 
-    public void NavTo(Vector2 pos) { agent.TargetPosition = pos; }
+    public void NavTo(Vector2 pos) {
+        if (!IsAlive) return;
+        agent.TargetPosition = pos; 
+    }
 
     public override void _PhysicsProcess(double delta)
     {
         if (health <= 0)
         {
-            QueueFree();
+            Visible = false;
         }
         healthBar.Value = health;
         if (agent.IsNavigationFinished())
