@@ -11,9 +11,9 @@ public partial class Firewave : Node2D
     public override void _PhysicsProcess(double delta)
     {
         tick++;
-        if (tick % 10 == 0)
+        if (tick % 100 == 0)
         {
-            var f = fireball.Instantiate<Node2D>();
+            var f = fireball.Instantiate<Fireball>();
             GetTree().Root.AddChild(f);
             f.Position = Position;
         }

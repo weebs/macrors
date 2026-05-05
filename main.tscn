@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://ct76je1xo5kqe" path="res://Main.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dmgamidex86ho" path="res://char.tscn" id="2_kek77"]
 [ext_resource type="Script" uid="uid://dmd3hsntlbhng" path="res://navigation_region_2d.gd" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://cicrdhs462iad" path="res://water.png" id="4_5vw27"]
-[ext_resource type="Texture2D" uid="uid://c7ebjheqkdjwy" path="res://earth.png" id="5_kek77"]
-[ext_resource type="Texture2D" uid="uid://gnf36t11x0ha" path="res://fire.png" id="6_4c57u"]
+[ext_resource type="Texture2D" uid="uid://cicrdhs462iad" path="res://textures/water.png" id="4_5vw27"]
+[ext_resource type="Texture2D" uid="uid://c7ebjheqkdjwy" path="res://textures/earth.png" id="5_kek77"]
+[ext_resource type="Texture2D" uid="uid://gnf36t11x0ha" path="res://textures/fire.png" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bqsx5vconcx6r" path="res://fireball.tscn" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bvg27yi2swmwj" path="res://firewave.tscn" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://cxtftstskty2k" path="res://textures/air.png" id="9_kek77"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h2yge"]
 vertices = PackedVector2Array(1424.25, 736.3672, -339.82813, 804.52344, -153.70313, -174.11719, 1449.7109, -198.82813)
@@ -23,50 +24,24 @@ position = Vector2(64, 383)
 [node name="Char2" parent="." unique_id=1140299686 instance=ExtResource("2_kek77")]
 position = Vector2(368, 389)
 
-[node name="Sprite2D" parent="Char2" index="0" unique_id=1461982612]
+[node name="Sprite2D" parent="Char2" index="1" unique_id=1461982612]
 texture = ExtResource("4_5vw27")
 
 [node name="Char3" parent="." unique_id=326104074 instance=ExtResource("2_kek77")]
 position = Vector2(241, 269)
 
-[node name="Sprite2D" parent="Char3" index="0" unique_id=1461982612]
+[node name="Sprite2D" parent="Char3" index="1" unique_id=1461982612]
 texture = ExtResource("5_kek77")
 
 [node name="Char4" parent="." unique_id=1505541712 instance=ExtResource("2_kek77")]
 position = Vector2(427, 169)
 
-[node name="Sprite2D" parent="Char4" index="0" unique_id=1461982612]
+[node name="Sprite2D" parent="Char4" index="1" unique_id=1461982612]
 texture = ExtResource("6_4c57u")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=161150175]
 navigation_polygon = SubResource("NavigationPolygon_h2yge")
 script = ExtResource("4_1bvp3")
-
-[node name="Button" type="Button" parent="." unique_id=2085533848]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Char 1"
-
-[node name="Button2" type="Button" parent="." unique_id=466522728]
-offset_left = -12.0
-offset_top = 57.0
-offset_right = 46.0
-offset_bottom = 88.0
-text = "Char 2"
-
-[node name="Button3" type="Button" parent="." unique_id=1165106408]
-offset_left = -14.0
-offset_top = 110.0
-offset_right = 44.0
-offset_bottom = 141.0
-text = "Char 3"
-
-[node name="Button4" type="Button" parent="." unique_id=461371490]
-offset_left = -11.0
-offset_top = 152.0
-offset_right = 47.0
-offset_bottom = 183.0
-text = "Char 4"
 
 [node name="Label" type="Label" parent="." unique_id=164188463]
 offset_left = 102.0
@@ -80,6 +55,36 @@ position = Vector2(978, 342)
 
 [node name="Firewave" parent="." unique_id=864068658 instance=ExtResource("8_kek77")]
 position = Vector2(557, 358)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=258704831]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer" unique_id=1393108844]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+texture_normal = ExtResource("9_kek77")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer" unique_id=1651246983]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+texture_normal = ExtResource("9_kek77")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer" unique_id=563307120]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+texture_normal = ExtResource("9_kek77")
+stretch_mode = 0
 
 [editable path="Char"]
 [editable path="Char2"]

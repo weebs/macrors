@@ -1,7 +1,8 @@
+// ReSharper disable AccessToStaticMemberViaDerivedType
+
 using Godot;
 using System;
 using System.Collections.Generic;
-// ReSharper disable AccessToStaticMemberViaDerivedType
 
 public union Foo(string, int);
 
@@ -13,26 +14,22 @@ public union Foo(string, int);
 
 public partial class Main : Node2D
 {
-    Char selectedChar;
-    //Char char1;
-    //Char char2;
-    //Char char3;
-    //Char char4;
+    Char selectedChar
+    {
+        set
+        {
+            if (field != null)
+                field.Deselected();
+            field = value;
+            value.Selected();
+        }
+        get => field;
+    }
     List<Char> chars = new();
     Label selectedLabel;
     public override void _Ready()
     {
-        //char1 = GetNode<Char>("Char");
-        //char2 = GetNode<Char>("Char2");
-        //char3 = GetNode<Char>("Char3");
-        //char4 = GetNode<Char>("Char4");
         selectedLabel = GetNode<Label>("Label");
-        GetNode<Button>("Button").Connect(Button.SignalName.Pressed, Callable.From(Button1Clicked));
-        GetNode<Button>("Button2").Connect(Button.SignalName.Pressed, Callable.From(Button2Clicked));
-        GetNode<Button>("Button3").Connect(Button.SignalName.Pressed, Callable.From(Button3Clicked));
-        GetNode<Button>("Button4").Connect(Button.SignalName.Pressed, Callable.From(Button4Clicked));
-        //selectedChar = char1;
-        //GD.Print(char1);
     }
 
     public void ConnectChar(Char c)
@@ -40,29 +37,15 @@ public partial class Main : Node2D
         chars.Add(c);
         if (selectedChar == null)
             selectedChar = c;
+        var btn = new TextureButton();
+        btn.StretchMode = TextureButton.StretchModeEnum.Scale;
+        btn.TextureNormal = c.sprite.Texture;
+        btn.IgnoreTextureSize = true;
+        btn.CustomMaximumSize = new Vector2(20, 20);
+        btn.CustomMinimumSize = new Vector2(20, 20);
+        btn.Pressed += () => { selectedChar = c; };
+        GetNode("VBoxContainer").AddChild(btn);
     }
-
-    void Button1Clicked()
-    {
-        selectedChar = chars[0];
-        //selectedChar = char1;
-    }
-    void Button2Clicked()
-    {
-        selectedChar = chars[1];
-        //selectedChar = char2;
-    }
-    void Button3Clicked()
-    {
-        selectedChar = chars[2];
-        //selectedChar = char3;
-    }
-    void Button4Clicked()
-    {
-        selectedChar = chars[3];
-        //selectedChar = char4;
-    }
-
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("Char1"))

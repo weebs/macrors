@@ -5,12 +5,14 @@ public partial class Char : CharacterBody2D
 {
     private NavigationAgent2D agent;
 
+    public Sprite2D sprite;
     public float movementSpeed = 200f;
     public float health = 50.0f;
     ProgressBar healthBar;
 
     public override void _Ready()
     {
+        sprite = GetNode<Sprite2D>("Sprite2D");
         healthBar = GetNode<ProgressBar>("ProgressBar");
         agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         agent.PathDesiredDistance = 4;
@@ -42,5 +44,15 @@ public partial class Char : CharacterBody2D
     {
         await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
         //agent.TargetPosition = new(70, 20);
+    }
+
+    public void Selected()
+    {
+        GetNode<Node2D>("Highlight").Visible = true;
+    }
+
+    public void Deselected()
+    {
+        GetNode<Node2D>("Highlight").Visible = false;
     }
 }

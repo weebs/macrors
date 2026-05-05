@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dmgamidex86ho"]
 
 [ext_resource type="Script" uid="uid://cv5iypemj5uuv" path="res://Char.cs" id="1_hs5vj"]
-[ext_resource type="Texture2D" uid="uid://cxtftstskty2k" path="res://air.png" id="2_3bvsw"]
+[ext_resource type="Texture2D" uid="uid://cxtftstskty2k" path="res://textures/air.png" id="2_3bvsw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncbi3"]
 
 [node name="Char" type="CharacterBody2D" unique_id=1198769720]
 script = ExtResource("1_hs5vj")
+
+[node name="Highlight" type="Polygon2D" parent="." unique_id=838336245]
+visible = false
+polygon = PackedVector2Array(-18, -15, 23, -17, 23, 20, -21, 22)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461982612]
 scale = Vector2(0.024669366, 0.02526605)
