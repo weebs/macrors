@@ -20,7 +20,7 @@ public partial class Firewave : Node2D
 
             var m = GetNode<Main>("/root/Main");
             var alive = m.Characters.Where(c => c.IsAlive).ToArray();
-            var random = alive[r.Next(0, alive.Length - 1)];
+            var random = alive[r.Next(0, alive.Length)];
             f.dir = (random.Position - f.Position).Normalized();
 
             GetTree().Root.AddChild(f);
