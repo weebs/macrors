@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "macrors": {
+      "commandName": "Project"
+    },
+    "Macro RS": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Godot\\Godot_v4.7-beta1_mono_win64_console.exe",
+      "commandLineArgs": "C:\\Users\\Dave\\code\\macrors",
+      "workingDirectory": "C:\\Users\\Dave\\code\\macrors"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Godot\\godot.exe",
+      "commandLineArgs": "C:\\Users\\Dave\\code\\macrors",
+      "workingDirectory": "C:\\Users\\Dave\\code\\macrors"
+    }
+  }
+}
