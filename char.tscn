@@ -13,7 +13,7 @@ script = ExtResource("1_hs5vj")
 visible = false
 polygon = PackedVector2Array(-18, -15, 23, -17, 23, 20, -21, 22)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461982612]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=71984403]
 scale = Vector2(0.024669366, 0.02526605)
 texture = ExtResource("2_3bvsw")
 

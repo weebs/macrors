@@ -25,7 +25,6 @@ public partial class Fireball : Area2D
 
     void bodyEntered(Node2D body)
     {
-        GD.Print("Fireball ", this, " collided with ", body);
         if (body is Char c)
         {
             c.Hurt(1f);

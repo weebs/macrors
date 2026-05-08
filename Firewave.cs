@@ -18,8 +18,7 @@ public partial class Firewave : Node2D
             var f = fireball.Instantiate<Fireball>();
             f.Position = Position;
 
-            var m = GetNode<Main>("/root/Main");
-            var alive = m.Characters.Where(c => c.IsAlive).ToArray();
+            var alive = Main.global.Characters.Where(c => c.IsAlive).ToArray();
             var random = alive[r.Next(0, alive.Length)];
             f.dir = (random.Position - f.Position).Normalized();
 

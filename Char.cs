@@ -9,6 +9,7 @@ public partial class Char : CharacterBody2D
     public float movementSpeed = 200f;
     public float health = 50.0f;
     ProgressBar healthBar;
+    Node2D highlight;
     bool isMouseOver;
 
     public bool IsAlive { get => Visible == true; }
@@ -17,13 +18,13 @@ public partial class Char : CharacterBody2D
     {
         sprite = GetNode<Sprite2D>("Sprite2D");
         healthBar = GetNode<ProgressBar>("ProgressBar");
+        highlight = GetNode<Node2D>("Highlight");
         agent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         agent.PathDesiredDistance = 4;
         agent.TargetDesiredDistance = 4;
-        Callable.From(ActorSetup).CallDeferred();
         Main.global.RegisterCharacter(this);
-        MouseEntered += () => { isMouseOver = true; };
-        MouseExited += () => { isMouseOver = false; };
+        MouseEntered += () => { isMouseOver = true; highlight.Visible = true; };
+        MouseExited += () => { isMouseOver = false; if (!Selected) highlight.Visible = false; };
     }
 
     public void NavTo(Vector2 pos)
@@ -34,10 +35,10 @@ public partial class Char : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!IsAlive) return;
         if (health <= 0)
         {
-            Visible = false;
-            DisableMode = DisableModeEnum.Remove;
+            Ko();
         }
         healthBar.Value = health;
         if (agent.IsNavigationFinished())
@@ -49,22 +50,35 @@ public partial class Char : CharacterBody2D
     }
 
     public void Hurt(float dmg) => health -= dmg;
-
-    private async void ActorSetup()
+    public void Ko()
     {
-        await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-        //agent.TargetPosition = new(70, 20);
+        if (!IsAlive) return;
+        Visible = false;
+        DisableMode = DisableModeEnum.Remove;
     }
 
-    public void Selected()
+    public bool Selected
     {
-        GetNode<Node2D>("Highlight").Visible = true;
+        get;
+        set {
+            field = value;
+            GetNode<Node2D>("Highlight").Visible = field;
+        }
     }
 
-    public void Deselected()
-    {
-        GetNode<Node2D>("Highlight").Visible = false;
-    }
+    public void Select() => Selected = true;
+    public void Deselect() => Selected = false;
+
+    //public void Selected()
+    //{
+    //    selected = true;
+    //    GetNode<Node2D>("Highlight").Visible = true;
+    //}
+
+    //public void Deselected()
+    //{
+    //    GetNode<Node2D>("Highlight").Visible = false;
+    //}
 
     public override void _Input(InputEvent @event)
     {

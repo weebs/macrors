@@ -17,20 +17,19 @@ public partial class Main : Node2D
 {
     Char selectedChar
     {
+        get;
         set
         {
             if (field != null)
-                field.Deselected();
+                field.Deselect();
             field = value;
-            value.Selected();
+            value.Select();
         }
-        get => field;
     }
 
     List<Char> chars = new();
     public IReadOnlyList<Char> Characters { get => chars; }
     public static Main global;
-    bool charJustSelected = false;
     int score = 0;
     Label selectedLabel;
 
@@ -94,6 +93,7 @@ public partial class Main : Node2D
             //await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             if (me.ButtonIndex == MouseButton.Left && me.Pressed)
             {
+                GD.Print("Nav To");
                 selectedChar.NavTo(GetGlobalMousePosition());
             }
         }
