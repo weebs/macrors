@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvg27yi2swmwj"]
 
-[ext_resource type="Script" uid="uid://bkqlj42cu50fn" path="res://Firewave.cs" id="1_gkkgj"]
-[ext_resource type="PackedScene" uid="uid://bqsx5vconcx6r" path="res://fireball.tscn" id="2_dp7m7"]
+[ext_resource type="Script" uid="uid://bkqlj42cu50fn" path="res://code/Dragonbreath.cs" id="1_gkkgj"]
+[ext_resource type="PackedScene" uid="uid://bqsx5vconcx6r" path="res://scenes/fireball.tscn" id="2_dp7m7"]
 [ext_resource type="Texture2D" uid="uid://buwp0lcss30ge" path="res://textures/Blue_Dragon.png" id="3_u7heb"]
 
 [node name="Firewave" type="Node2D" unique_id=864068658]

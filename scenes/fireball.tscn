@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqsx5vconcx6r"]
 
-[ext_resource type="Script" uid="uid://t7rpt14uxwof" path="res://Fireball.cs" id="1_olwj8"]
-[ext_resource type="Texture2D" uid="uid://bpmfkg15f87i3" path="res://fireball.png" id="2_wdani"]
+[ext_resource type="Script" uid="uid://t7rpt14uxwof" path="res://code/Fireball.cs" id="1_olwj8"]
+[ext_resource type="Texture2D" uid="uid://bpmfkg15f87i3" path="res://textures/fireball.png" id="2_wdani"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nix7o"]
 

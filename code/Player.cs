@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public union Foo(string, int);
+// public union Foo(string, int);
 
 //private T Node<T>() where T : class
 //{
@@ -41,6 +41,7 @@ public partial class Main : Node2D
     public override void _EnterTree()
     {
         global = this;
+        GD.Print("yo");
     }
 
     public override void _Ready()

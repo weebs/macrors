@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://initdxijun6r"]
+
+[ext_resource type="Script" uid="uid://ct76je1xo5kqe" path="res://code/Player.cs" id="1_sweqy"]
+[ext_resource type="PackedScene" uid="uid://dmgamidex86ho" path="res://scenes/char.tscn" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://cicrdhs462iad" path="res://textures/water.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://c7ebjheqkdjwy" path="res://textures/earth.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://gnf36t11x0ha" path="res://textures/fire.png" id="5_b26j0"]
+
+[node name="Player" type="Node2D" unique_id=959500876]
+script = ExtResource("1_sweqy")
+
+[node name="Char" parent="." unique_id=1198769720 instance=ExtResource("2_2hs0m")]
+position = Vector2(64, 383)
+
+[node name="Char2" parent="." unique_id=1140299686 instance=ExtResource("2_2hs0m")]
+position = Vector2(436, 431)
+
+[node name="Sprite2D" parent="Char2" index="1" unique_id=71984403]
+texture = ExtResource("3_1jxqw")
+
+[node name="ProgressBar" parent="Char2" index="4" unique_id=1969637057]
+metadata/_edit_use_anchors_ = true
+
+[node name="Char3" parent="." unique_id=326104074 instance=ExtResource("2_2hs0m")]
+position = Vector2(873, 304)
+
+[node name="Sprite2D" parent="Char3" index="1" unique_id=71984403]
+texture = ExtResource("4_dw050")
+
+[node name="Char4" parent="." unique_id=1505541712 instance=ExtResource("2_2hs0m")]
+position = Vector2(427, 169)
+
+[node name="Sprite2D" parent="Char4" index="1" unique_id=71984403]
+texture = ExtResource("5_b26j0")
+
+[node name="Label" type="Label" parent="." unique_id=164188463]
+offset_left = 102.0
+offset_top = 4.0
+offset_right = 206.0
+offset_bottom = 27.0
+text = "Selected char"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=258704831]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[editable path="Char"]
+[editable path="Char2"]
+[editable path="Char3"]
+[editable path="Char4"]

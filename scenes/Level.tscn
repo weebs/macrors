@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bdr03bp2y5ib7"]
+
+[ext_resource type="Script" uid="uid://dmd3hsntlbhng" path="res://code/navigation_region_2d.gd" id="1_bexhn"]
+[ext_resource type="Texture2D" uid="uid://dkikk1ylub54l" path="res://textures/runite_ore.png" id="2_t7iv1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_t7iv1"]
+vertices = PackedVector2Array(1358.6094, 694.02344, -249.72656, 697.96875, -226.25, -197.09375, 1416.3281, -213.88281)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-236, -207, 1427, -224, 1368, 704, -260, 708)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7iv1"]
+size = Vector2(724.8572, 842.85724)
+
+[node name="Level" type="Node2D" unique_id=1688623594]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1227496160]
+navigation_polygon = SubResource("NavigationPolygon_t7iv1")
+script = ExtResource("1_bexhn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D" unique_id=149220283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D" unique_id=744101640]
+position = Vector2(184, 101)
+scale = Vector2(0.118644066, 0.118644066)
+shape = SubResource("RectangleShape2D_t7iv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/StaticBody2D" unique_id=109487240]
+position = Vector2(184, 101)
+scale = Vector2(0.118644066, 0.118644066)
+texture = ExtResource("2_t7iv1")

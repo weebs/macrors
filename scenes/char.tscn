@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmgamidex86ho"]
 
-[ext_resource type="Script" uid="uid://cv5iypemj5uuv" path="res://Char.cs" id="1_hs5vj"]
+[ext_resource type="Script" uid="uid://cv5iypemj5uuv" path="res://code/Char.cs" id="1_hs5vj"]
 [ext_resource type="Texture2D" uid="uid://cxtftstskty2k" path="res://textures/air.png" id="2_3bvsw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncbi3"]
@@ -21,6 +21,7 @@ texture = ExtResource("2_3bvsw")
 shape = SubResource("CircleShape2D_ncbi3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1867196901]
+avoidance_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1969637057]
 offset_left = -2.0

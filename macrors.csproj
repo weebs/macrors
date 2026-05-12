@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="OneOf" Version="3.0.271"/>
+    </ItemGroup>
 </Project>

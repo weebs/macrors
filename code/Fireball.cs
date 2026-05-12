@@ -17,7 +17,7 @@ public partial class Fireball : Area2D
         ticks++;
         if (ticks > 400)
         {
-            Main.global.Score(10);
+            G.player.Score(10);
             QueueFree();
         }
         Translate(dir * speed * (float)delta);

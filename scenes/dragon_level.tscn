@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bec05wiwhtkqh"]
+
+[ext_resource type="Script" uid="uid://dmd3hsntlbhng" path="res://code/navigation_region_2d.gd" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://bqsx5vconcx6r" path="res://scenes/fireball.tscn" id="2_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://bvg27yi2swmwj" path="res://scenes/firewave.tscn" id="3_f2txt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_h2yge"]
+vertices = PackedVector2Array(1424.25, 736.3672, -339.82813, 804.52344, -153.70313, -174.11719, 1449.7109, -198.82813)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-162, -184, 1460, -209, 1434, 746, -352, 815)])
+
+[node name="Dragon" type="Node2D" unique_id=1236891710]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1196833244]
+navigation_polygon = SubResource("NavigationPolygon_h2yge")
+script = ExtResource("1_oi3di")
+
+[node name="Fireball" parent="." unique_id=423242766 instance=ExtResource("2_0b4ue")]
+position = Vector2(978, 342)
+
+[node name="Firewave" parent="." unique_id=864068658 instance=ExtResource("3_f2txt")]
+position = Vector2(557, 358)
