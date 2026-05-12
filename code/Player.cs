@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 //    return GetNode<T>(typeof(T).Name);
 //}
 
-public partial class Main : Node2D
+public partial class Player : Node2D
 {
     Char selectedChar
     {
@@ -29,7 +29,7 @@ public partial class Main : Node2D
 
     List<Char> chars = new();
     public IReadOnlyList<Char> Characters { get => chars; }
-    public static Main global;
+    public static Player global;
     int score = 0;
     Label selectedLabel;
 
